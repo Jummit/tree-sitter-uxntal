@@ -8,6 +8,8 @@ Comments
 comment
 )
 
+(close)
+
 ()
 
 (
@@ -17,6 +19,7 @@ comment
 ---
 
 (source_file
+  (comment (comment_content))
   (comment (comment_content))
   (comment (comment_content))
   (comment)

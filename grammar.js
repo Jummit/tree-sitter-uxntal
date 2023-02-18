@@ -1,6 +1,6 @@
 module.exports = grammar({
   name: 'uxntal',
-
+  extras: $ => [$.comment, /\s+/],
   rules: {
     source_file: $ => repeat($._token),
 
@@ -48,7 +48,7 @@ module.exports = grammar({
     ),
 
     // Does this need to be this verbose? Understanding precedence could make this cleaner.
-    identifier: $ => /[\^\s]([^,\|\$\[\]\.;_\-=#\s][\dA-z]+[^\s]*)/,
+    identifier: $ => /[^,\|\$\[\]\(\.;_\-=#\s][\dA-z]*[^\s]*/,
     
     comment_content: $ => /[^\)]+/
   },

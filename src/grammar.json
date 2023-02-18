@@ -350,7 +350,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[\\^\\s]([^,\\|\\$\\[\\]\\.;_\\-=#\\s][\\dA-z]+[^\\s]*)"
+      "value": "[^,\\|\\$\\[\\]\\(\\.;_\\-=#\\s][\\dA-z]*[^\\s]*"
     },
     "comment_content": {
       "type": "PATTERN",
@@ -359,8 +359,12 @@
   },
   "extras": [
     {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "\\s+"
     }
   ],
   "conflicts": [],
