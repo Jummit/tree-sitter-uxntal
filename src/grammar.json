@@ -1,0 +1,278 @@
+{
+  "name": "uxntal",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "opcode"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_rune"
+          }
+        ]
+      }
+    },
+    "opcode": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "BRK"
+        },
+        {
+          "type": "STRING",
+          "value": "INC"
+        },
+        {
+          "type": "STRING",
+          "value": "POP"
+        },
+        {
+          "type": "STRING",
+          "value": "NIP"
+        },
+        {
+          "type": "STRING",
+          "value": "SWP"
+        },
+        {
+          "type": "STRING",
+          "value": "ROT"
+        },
+        {
+          "type": "STRING",
+          "value": "DUP"
+        },
+        {
+          "type": "STRING",
+          "value": "OVR"
+        },
+        {
+          "type": "STRING",
+          "value": "EQU"
+        },
+        {
+          "type": "STRING",
+          "value": "NEQ"
+        },
+        {
+          "type": "STRING",
+          "value": "GTH"
+        },
+        {
+          "type": "STRING",
+          "value": "LTH"
+        },
+        {
+          "type": "STRING",
+          "value": "JMP"
+        },
+        {
+          "type": "STRING",
+          "value": "JCN"
+        },
+        {
+          "type": "STRING",
+          "value": "JSR"
+        },
+        {
+          "type": "STRING",
+          "value": "STH"
+        },
+        {
+          "type": "STRING",
+          "value": "LDZ"
+        },
+        {
+          "type": "STRING",
+          "value": "STZ"
+        },
+        {
+          "type": "STRING",
+          "value": "LDR"
+        },
+        {
+          "type": "STRING",
+          "value": "STR"
+        },
+        {
+          "type": "STRING",
+          "value": "LDA"
+        },
+        {
+          "type": "STRING",
+          "value": "STA"
+        },
+        {
+          "type": "STRING",
+          "value": "DEI"
+        },
+        {
+          "type": "STRING",
+          "value": "DEO"
+        },
+        {
+          "type": "STRING",
+          "value": "ADD"
+        },
+        {
+          "type": "STRING",
+          "value": "SUB"
+        },
+        {
+          "type": "STRING",
+          "value": "MUL"
+        },
+        {
+          "type": "STRING",
+          "value": "DIV"
+        },
+        {
+          "type": "STRING",
+          "value": "AND"
+        },
+        {
+          "type": "STRING",
+          "value": "ORA"
+        },
+        {
+          "type": "STRING",
+          "value": "EOR"
+        },
+        {
+          "type": "STRING",
+          "value": "SFT"
+        },
+        {
+          "type": "STRING",
+          "value": "JCI"
+        },
+        {
+          "type": "STRING",
+          "value": "JMI"
+        },
+        {
+          "type": "STRING",
+          "value": "JSI"
+        },
+        {
+          "type": "STRING",
+          "value": "LIT"
+        }
+      ]
+    },
+    "_rune": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "absolute_pad"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "raw_character"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal_hex"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "label"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sub_label"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "relative_pad"
+        }
+      ]
+    },
+    "absolute_pad": {
+      "type": "PATTERN",
+      "value": "|[0-9]+"
+    },
+    "raw_character": {
+      "type": "PATTERN",
+      "value": "\\\"."
+    },
+    "literal_hex": {
+      "type": "PATTERN",
+      "value": "#[^\\s]+"
+    },
+    "label": {
+      "type": "PATTERN",
+      "value": "@[^\\s]+"
+    },
+    "sub_label": {
+      "type": "PATTERN",
+      "value": "&[^\\s]+"
+    },
+    "relative_pad": {
+      "type": "PATTERN",
+      "value": "\\$[0-9]+"
+    },
+    "comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "comment_content"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
+    "comment_content": {
+      "type": "PATTERN",
+      "value": "[^\\)]+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

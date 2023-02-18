@@ -1,0 +1,13 @@
+========
+Opcodes
+========
+
+LIT DEO
+DEO
+
+---
+
+(source_file
+  (opcode)
+  (opcode)
+  (opcode))
