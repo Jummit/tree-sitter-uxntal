@@ -6,7 +6,7 @@ Runes
 
 |0100
 
-"h "i
+"h "Long
 
 #10
 
@@ -17,12 +17,18 @@ Runes
 ---
 
 (source_file
-  (absolute_pad)
-  (absolute_pad)
+  (absolute_pad
+    (number))
+  (absolute_pad
+    (number))
   (raw_character)
   (raw_character)
-  (literal_hex)
-  (literal_hex)
-  (label)
-  (sub_label)
-  (relative_pad))
+  (literal_hex
+    (number))
+  (literal_hex
+    (number))
+  (label_definition)
+  (sub_label_definition)
+  (relative_pad
+    (number))
+  (sub_label_definition))

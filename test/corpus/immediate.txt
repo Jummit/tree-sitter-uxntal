@@ -1,0 +1,13 @@
+================
+Immediate Runes
+================
+
+!&acc
+
+?routine
+
+---
+
+(source_file
+  (immediate (label))
+  (immediate (identifier)))

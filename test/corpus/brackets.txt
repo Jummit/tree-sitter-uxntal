@@ -1,0 +1,26 @@
+=========
+Brackets
+=========
+
+[]
+
+[#10 "a
+
+]
+
+@Console [ &vector $2 &read ]
+
+---
+
+(source_file
+  (brackets)
+  (brackets
+    (literal_hex
+	    (number))
+	(raw_character))
+  (label_definition)
+  (brackets
+    (sub_label_definition)
+    (relative_pad
+	    (number))
+    (sub_label_definition)))

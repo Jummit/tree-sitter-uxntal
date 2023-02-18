@@ -4,224 +4,34 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "comment"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "opcode"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_rune"
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "_token"
       }
     },
-    "opcode": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "BRK"
-        },
-        {
-          "type": "STRING",
-          "value": "INC"
-        },
-        {
-          "type": "STRING",
-          "value": "POP"
-        },
-        {
-          "type": "STRING",
-          "value": "NIP"
-        },
-        {
-          "type": "STRING",
-          "value": "SWP"
-        },
-        {
-          "type": "STRING",
-          "value": "ROT"
-        },
-        {
-          "type": "STRING",
-          "value": "DUP"
-        },
-        {
-          "type": "STRING",
-          "value": "OVR"
-        },
-        {
-          "type": "STRING",
-          "value": "EQU"
-        },
-        {
-          "type": "STRING",
-          "value": "NEQ"
-        },
-        {
-          "type": "STRING",
-          "value": "GTH"
-        },
-        {
-          "type": "STRING",
-          "value": "LTH"
-        },
-        {
-          "type": "STRING",
-          "value": "JMP"
-        },
-        {
-          "type": "STRING",
-          "value": "JCN"
-        },
-        {
-          "type": "STRING",
-          "value": "JSR"
-        },
-        {
-          "type": "STRING",
-          "value": "STH"
-        },
-        {
-          "type": "STRING",
-          "value": "LDZ"
-        },
-        {
-          "type": "STRING",
-          "value": "STZ"
-        },
-        {
-          "type": "STRING",
-          "value": "LDR"
-        },
-        {
-          "type": "STRING",
-          "value": "STR"
-        },
-        {
-          "type": "STRING",
-          "value": "LDA"
-        },
-        {
-          "type": "STRING",
-          "value": "STA"
-        },
-        {
-          "type": "STRING",
-          "value": "DEI"
-        },
-        {
-          "type": "STRING",
-          "value": "DEO"
-        },
-        {
-          "type": "STRING",
-          "value": "ADD"
-        },
-        {
-          "type": "STRING",
-          "value": "SUB"
-        },
-        {
-          "type": "STRING",
-          "value": "MUL"
-        },
-        {
-          "type": "STRING",
-          "value": "DIV"
-        },
-        {
-          "type": "STRING",
-          "value": "AND"
-        },
-        {
-          "type": "STRING",
-          "value": "ORA"
-        },
-        {
-          "type": "STRING",
-          "value": "EOR"
-        },
-        {
-          "type": "STRING",
-          "value": "SFT"
-        },
-        {
-          "type": "STRING",
-          "value": "JCI"
-        },
-        {
-          "type": "STRING",
-          "value": "JMI"
-        },
-        {
-          "type": "STRING",
-          "value": "JSI"
-        },
-        {
-          "type": "STRING",
-          "value": "LIT"
-        }
-      ]
-    },
-    "_rune": {
+    "_token": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "absolute_pad"
+          "name": "comment"
         },
         {
           "type": "SYMBOL",
-          "name": "raw_character"
+          "name": "_rune"
         },
         {
           "type": "SYMBOL",
-          "name": "literal_hex"
+          "name": "brackets"
         },
         {
           "type": "SYMBOL",
-          "name": "label"
+          "name": "immediate"
         },
         {
           "type": "SYMBOL",
-          "name": "sub_label"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "relative_pad"
+          "name": "identifier"
         }
       ]
-    },
-    "absolute_pad": {
-      "type": "PATTERN",
-      "value": "|[0-9]+"
-    },
-    "raw_character": {
-      "type": "PATTERN",
-      "value": "\\\"."
-    },
-    "literal_hex": {
-      "type": "PATTERN",
-      "value": "#[^\\s]+"
-    },
-    "label": {
-      "type": "PATTERN",
-      "value": "@[^\\s]+"
-    },
-    "sub_label": {
-      "type": "PATTERN",
-      "value": "&[^\\s]+"
-    },
-    "relative_pad": {
-      "type": "PATTERN",
-      "value": "\\$[0-9]+"
     },
     "comment": {
       "type": "CHOICE",
@@ -257,6 +67,290 @@
           ]
         }
       ]
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "[\\da-f]{2}|[\\da-f]{4}"
+    },
+    "immediate": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "?"
+            },
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "[^\\s]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "!"
+            },
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "[^\\s]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "_rune": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "absolute_pad"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "raw_character"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal_hex"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "label_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sub_label_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "relative_pad"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "label"
+        }
+      ]
+    },
+    "absolute_pad": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "|"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\da-f]{2}|[\\da-f]{4}"
+          },
+          "named": true,
+          "value": "number"
+        }
+      ]
+    },
+    "raw_character": {
+      "type": "PATTERN",
+      "value": "\\\"[^\\s]+"
+    },
+    "literal_hex": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\da-f]{2}|[\\da-f]{4}"
+          },
+          "named": true,
+          "value": "number"
+        }
+      ]
+    },
+    "label_definition": {
+      "type": "PATTERN",
+      "value": "@[^\\s]+"
+    },
+    "sub_label_definition": {
+      "type": "PATTERN",
+      "value": "&[^\\s]+"
+    },
+    "relative_pad": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[\\da-f]+"
+            }
+          },
+          "named": true,
+          "value": "number"
+        }
+      ]
+    },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "STRING",
+              "value": "."
+            },
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "STRING",
+              "value": "_"
+            },
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "STRING",
+              "value": "="
+            }
+          ]
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^/\\s]+"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "/"
+                    },
+                    {
+                      "type": "IMMEDIATE_TOKEN",
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[^\\s]+"
+                      }
+                    }
+                  ]
+                }
+              },
+              "named": true,
+              "value": "sub_label"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "sub_label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\s]+"
+          }
+        }
+      ]
+    },
+    "brackets": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_token"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "macro_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "%[\\dA-z]+"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_token"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[\\^\\s]([^,\\|\\$\\[\\]\\.;_\\-=#\\s][\\dA-z]+[^\\s]*)"
     },
     "comment_content": {
       "type": "PATTERN",

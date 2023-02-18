@@ -1,0 +1,29 @@
+===============
+Address Labels
+===============
+
+.Console
+
+.Console/write DEO
+
+,label
+.label
+;meta
+
+_label
+-label
+=label
+
+---
+
+(source_file
+  (label)
+  (label
+    (sub_label))
+  (identifier)
+  (label)
+  (label)
+  (label)
+  (label)
+  (label)
+  (label))

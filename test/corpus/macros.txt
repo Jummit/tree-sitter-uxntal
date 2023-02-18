@@ -1,0 +1,21 @@
+=======
+Macros
+=======
+
+%EMIT { #12 }
+
+%QUIT { }
+
+QUIT EMIT
+
+weird\)(#![])test)
+---
+
+(source_file
+  (macro_definition
+    (literal_hex
+	  (number)))
+  (macro_definition)
+  (identifier)
+  (identifier)
+  (identifier))

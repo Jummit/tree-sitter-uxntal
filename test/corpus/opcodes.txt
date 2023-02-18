@@ -3,11 +3,12 @@ Opcodes
 ========
 
 LIT DEO
-DEO
+NEQ2 INC2k
 
 ---
 
 (source_file
-  (opcode)
-  (opcode)
-  (opcode))
+  (identifier)
+  (identifier)
+  (identifier)
+  (identifier))

@@ -1,5 +1,79 @@
 [
   {
+    "type": "absolute_pad",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "brackets",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "absolute_pad",
+          "named": true
+        },
+        {
+          "type": "brackets",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "label_definition",
+          "named": true
+        },
+        {
+          "type": "literal_hex",
+          "named": true
+        },
+        {
+          "type": "macro_definition",
+          "named": true
+        },
+        {
+          "type": "raw_character",
+          "named": true
+        },
+        {
+          "type": "relative_pad",
+          "named": true
+        },
+        {
+          "type": "sub_label_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {},
@@ -15,9 +89,113 @@
     }
   },
   {
-    "type": "opcode",
+    "type": "immediate",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "label",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "sub_label",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literal_hex",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "absolute_pad",
+          "named": true
+        },
+        {
+          "type": "brackets",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "label_definition",
+          "named": true
+        },
+        {
+          "type": "literal_hex",
+          "named": true
+        },
+        {
+          "type": "macro_definition",
+          "named": true
+        },
+        {
+          "type": "raw_character",
+          "named": true
+        },
+        {
+          "type": "relative_pad",
+          "named": true
+        },
+        {
+          "type": "sub_label_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "relative_pad",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "source_file",
@@ -32,7 +210,19 @@
           "named": true
         },
         {
+          "type": "brackets",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate",
           "named": true
         },
         {
@@ -40,11 +230,15 @@
           "named": true
         },
         {
+          "type": "label_definition",
+          "named": true
+        },
+        {
           "type": "literal_hex",
           "named": true
         },
         {
-          "type": "opcode",
+          "type": "macro_definition",
           "named": true
         },
         {
@@ -56,11 +250,23 @@
           "named": true
         },
         {
-          "type": "sub_label",
+          "type": "sub_label_definition",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "$",
+    "named": false
   },
   {
     "type": "(",
@@ -71,163 +277,59 @@
     "named": false
   },
   {
-    "type": "ADD",
+    "type": ",",
     "named": false
   },
   {
-    "type": "AND",
+    "type": "-",
     "named": false
   },
   {
-    "type": "BRK",
+    "type": ".",
     "named": false
   },
   {
-    "type": "DEI",
+    "type": "/",
     "named": false
   },
   {
-    "type": "DEO",
+    "type": ";",
     "named": false
   },
   {
-    "type": "DIV",
+    "type": "=",
     "named": false
   },
   {
-    "type": "DUP",
+    "type": "?",
     "named": false
   },
   {
-    "type": "EOR",
+    "type": "[",
     "named": false
   },
   {
-    "type": "EQU",
+    "type": "]",
     "named": false
   },
   {
-    "type": "GTH",
+    "type": "_",
     "named": false
-  },
-  {
-    "type": "INC",
-    "named": false
-  },
-  {
-    "type": "JCI",
-    "named": false
-  },
-  {
-    "type": "JCN",
-    "named": false
-  },
-  {
-    "type": "JMI",
-    "named": false
-  },
-  {
-    "type": "JMP",
-    "named": false
-  },
-  {
-    "type": "JSI",
-    "named": false
-  },
-  {
-    "type": "JSR",
-    "named": false
-  },
-  {
-    "type": "LDA",
-    "named": false
-  },
-  {
-    "type": "LDR",
-    "named": false
-  },
-  {
-    "type": "LDZ",
-    "named": false
-  },
-  {
-    "type": "LIT",
-    "named": false
-  },
-  {
-    "type": "LTH",
-    "named": false
-  },
-  {
-    "type": "MUL",
-    "named": false
-  },
-  {
-    "type": "NEQ",
-    "named": false
-  },
-  {
-    "type": "NIP",
-    "named": false
-  },
-  {
-    "type": "ORA",
-    "named": false
-  },
-  {
-    "type": "OVR",
-    "named": false
-  },
-  {
-    "type": "POP",
-    "named": false
-  },
-  {
-    "type": "ROT",
-    "named": false
-  },
-  {
-    "type": "SFT",
-    "named": false
-  },
-  {
-    "type": "STA",
-    "named": false
-  },
-  {
-    "type": "STH",
-    "named": false
-  },
-  {
-    "type": "STR",
-    "named": false
-  },
-  {
-    "type": "STZ",
-    "named": false
-  },
-  {
-    "type": "SUB",
-    "named": false
-  },
-  {
-    "type": "SWP",
-    "named": false
-  },
-  {
-    "type": "absolute_pad",
-    "named": true
   },
   {
     "type": "comment_content",
     "named": true
   },
   {
-    "type": "label",
+    "type": "identifier",
     "named": true
   },
   {
-    "type": "literal_hex",
+    "type": "label_definition",
+    "named": true
+  },
+  {
+    "type": "number",
     "named": true
   },
   {
@@ -235,11 +337,23 @@
     "named": true
   },
   {
-    "type": "relative_pad",
+    "type": "sub_label",
     "named": true
   },
   {
-    "type": "sub_label",
+    "type": "sub_label_definition",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]
